@@ -1,6 +1,8 @@
 import Grid from '@mui/material/Grid';
 import LiveMonitor from 'components/sections/dashboard/weaver-metrics/LiveMonitor';
 import SummaryGrid from 'components/sections/dashboard/weaver-metrics/SummaryGrid';
+import MetricSummaries from 'components/sections/dashboard/weaver-metrics/MetricSummaries';
+import ComplianceEnvironmentTable from 'components/sections/dashboard/weaver-metrics/ComplianceEnvironmentTable';
 import RevenueByCustomer from 'components/sections/dashboard/revenue-by-customer';
 import CompletedTask from 'components/sections/dashboard/completed-task';
 
@@ -17,7 +19,10 @@ const OverviewTab = () => {
                 <SummaryGrid />
             </Grid>
 
-
+            {/* Eval and Latency Summaries */}
+            <Grid item xs={12}>
+                <MetricSummaries />
+            </Grid>
 
             {/* Token Usage History */}
             <Grid item xs={12} xl={8}>
@@ -27,6 +32,11 @@ const OverviewTab = () => {
             {/* Audit compliance Queue */}
             <Grid item xs={12} xl={4}>
                 <CompletedTask />
+            </Grid>
+
+            {/* Detailed Compliance Table */}
+            <Grid item xs={12}>
+                <ComplianceEnvironmentTable />
             </Grid>
         </Grid>
     );

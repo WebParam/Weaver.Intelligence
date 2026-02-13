@@ -6,10 +6,11 @@ import RateChip from 'components/chips/RateChip';
 import DateSelect from 'components/dates/DateSelect';
 import IconifyIcon from 'components/base/IconifyIcon';
 import CompletedTaskChart from './CompletedTaskChart';
+import LatencyMiniSummary from 'components/sections/dashboard/weaver-metrics/LatencyMiniSummary';
 
 const CompletedTask = () => {
   return (
-    <Paper sx={{ height: 300 }}>
+    <Paper sx={{ p: 2, height: 'auto', minHeight: 480 }}>
       {/* header */}
       <Stack alignItems="center" spacing={0.6}>
         <IconifyIcon icon="mdi:shield-check" color="text.secondary" fontSize="h6.fontSize" />
@@ -30,9 +31,12 @@ const CompletedTask = () => {
       </Stack>
 
       {/* line chart */}
-      <Box height={220}>
+      <Box height={180}>
         <CompletedTaskChart sx={{ height: '100% !important' }} />
       </Box>
+
+      {/* Latency Mini Summary */}
+      <LatencyMiniSummary />
     </Paper>
   );
 };

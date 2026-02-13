@@ -39,19 +39,23 @@ const SummaryGrid = () => {
                                     borderRadius: 2,
                                     bgcolor: 'rgba(255,255,255,0.02)',
                                     border: '1px solid rgba(255,255,255,0.05)',
-                                    textAlign: 'center'
+                                    textAlign: 'center',
+                                    position: 'relative',
+                                    overflow: 'hidden'
                                 }}>
-                                    <Typography variant="caption" color="text.secondary" display="block">{env.name}</Typography>
-                                    <Typography variant="h6" fontWeight={700} color="primary.main">{env.rules}</Typography>
-                                    <Typography variant="caption">Rules</Typography>
                                     <Box sx={{
-                                        mt: 1,
+                                        position: 'absolute',
+                                        top: 8,
+                                        right: 8,
                                         width: 8,
                                         height: 8,
                                         borderRadius: '50%',
                                         bgcolor: env.status === 'active' ? '#4CAF50' : '#FFC107',
-                                        display: 'inline-block'
+                                        boxShadow: env.status === 'active' ? '0 0 6px #4CAF50' : '0 0 6px #FFC107'
                                     }} />
+                                    <Typography variant="caption" color="text.secondary" display="block">{env.name}</Typography>
+                                    <Typography variant="h6" fontWeight={700} color="primary.main">{env.rules}</Typography>
+                                    <Typography variant="caption">Rules</Typography>
                                 </Box>
                             </Grid>
                         ))}

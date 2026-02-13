@@ -78,6 +78,15 @@ const CATEGORIES: PolicyCategory[] = [
         subPolicyCount: 1,
         rootNodeIds: ['root-it'],
     },
+    {
+        id: 'cat-agent',
+        title: 'Agent Execution Policies',
+        description: 'Control agent autonomy, tool access, and multi-turn behavior.',
+        icon: 'mdi:robot-industrial-outline',
+        activeEnvironments: 4,
+        subPolicyCount: 2,
+        rootNodeIds: ['root-agent'],
+    },
 ];
 
 const POLICY_DATA: PolicyFile[] = [
@@ -154,6 +163,29 @@ const POLICY_DATA: PolicyFile[] = [
                 fileType: 'rego',
                 appliesTo: ['Production'],
                 content: `package weaver.compliance\n\n# GDPR compliance checks\ncompliant if {\n    input.metadata.user_consent == true\n    input.metadata.retention_days <= 365\n}`
+            }
+        ]
+    },
+    {
+        id: 'root-agent',
+        label: 'agent_runtime',
+        type: 'folder',
+        children: [
+            {
+                id: 'agent-1',
+                label: 'tool_access_control.rego',
+                type: 'file',
+                fileType: 'rego',
+                appliesTo: ['Staging', 'Production'],
+                content: `package weaver.agent\n\n# Restricted tools for sensitive envs\nrestricted_tools := ["delete_database", "terminal_access"]\n\ndeny if {\n    input.tool_name in restricted_tools\n    input.environment == "production"\n}`
+            },
+            {
+                id: 'agent-2',
+                label: 'max_loops_protection.rego',
+                type: 'file',
+                fileType: 'rego',
+                appliesTo: ['Development', 'Staging', 'Production'],
+                content: `package weaver.agent\n\n# Prevent execution loops\ndeny if {\n    input.iteration_count > 10\n}`
             }
         ]
     }
@@ -335,7 +367,7 @@ const Policies = () => {
                         </Typography>
                     </Grid>
                     {CATEGORIES.map(cat => (
-                        <Grid item xs={12} md={4} key={cat.id}>
+                        <Grid item xs={12} md={6} key={cat.id}>
                             <SummaryCard category={cat} onClick={() => handleCategoryClick(cat)} />
                         </Grid>
                     ))}
@@ -376,7 +408,7 @@ const Policies = () => {
                     }}>
                         <SimpleTreeView
                             aria-label="policy navigator"
-                            defaultExpandedItems={['root-guardrails', 'root-quality', 'root-it', 'root-compliance']}
+                            defaultExpandedItems={['root-guardrails', 'root-quality', 'root-it', 'root-compliance', 'root-agent']}
                             slots={{
                                 collapseIcon: ExpandMoreIcon,
                                 expandIcon: ChevronRightIcon,

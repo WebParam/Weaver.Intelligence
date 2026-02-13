@@ -76,16 +76,16 @@ const RevenueChart = ({ chartRef, data, ...rest }: BarChartProps) => {
           formatter: (value: number) => {
             if (value === 0) {
               return '0K';
-            } else if (value === 20000) {
-              return '20K';
-            } else if (value === 40000) {
-              return '40K';
-            } else if (value === 60000) {
-              return '60K';
-            } else if (value === 80000) {
-              return '80K';
+            } else if (value === 50000) {
+              return '50K';
             } else if (value === 100000) {
               return '100K';
+            } else if (value === 150000) {
+              return '150K';
+            } else if (value === 200000) {
+              return '200K';
+            } else if (value === 250000) {
+              return '250K';
             } else {
               return value;
             }
@@ -94,8 +94,8 @@ const RevenueChart = ({ chartRef, data, ...rest }: BarChartProps) => {
         splitLine: {
           show: false,
         },
-        interval: 20000,
-        max: 100000,
+        interval: 50000,
+        max: 250000,
       },
       series: data.series.map((item, index) => ({
         name: item.name,
