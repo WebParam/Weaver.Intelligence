@@ -11,6 +11,7 @@ const App = lazy(() => import('App'));
 const Dashboard = lazy(() => import('pages/dashboard'));
 const Environments = lazy(() => import('pages/environments'));
 const Policies = lazy(() => import('pages/policies'));
+const Agents = lazy(() => import('pages/agents'));
 const Artifacts = lazy(() => import('pages/artifacts'));
 const Login = lazy(() => import('pages/authentication/Login'));
 const Signup = lazy(() => import('pages/authentication/Signup'));
@@ -49,6 +50,10 @@ const router = createBrowserRouter(
             {
               path: paths.policies,
               element: <Policies />,
+            },
+            {
+              path: paths.agents,
+              element: <Agents />,
             },
             {
               path: paths.artifacts,

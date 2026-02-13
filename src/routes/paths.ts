@@ -9,6 +9,7 @@ export default {
   dashboard: '/dashboard',
   environments: '/environments',
   policies: '/policies',
+  agents: '/agents',
   artifacts: '/artifacts',
   features: `/${rootPaths.pagesRoot}/features`,
   users: `/${rootPaths.pagesRoot}/users`,

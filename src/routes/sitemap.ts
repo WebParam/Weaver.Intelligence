@@ -41,6 +41,13 @@ const sitemap: MenuItem[] = [
     active: true,
   },
   {
+    id: 'agents',
+    subheader: 'Agents',
+    path: '/agents',
+    icon: 'mdi:robot-industrial',
+    active: true,
+  },
+  {
     id: 'artifacts',
     subheader: 'Artifacts',
     path: paths.artifacts,
