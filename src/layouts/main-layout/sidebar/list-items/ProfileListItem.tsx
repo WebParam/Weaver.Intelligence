@@ -6,7 +6,7 @@ import Typography from '@mui/material/Typography';
 import ListItemButton from '@mui/material/ListItemButton';
 import AvatarImage from 'assets/images/avater.png';
 
-const ProfileListItem = ({ subheader, path }: MenuItem) => {
+const ProfileListItem = ({ path }: MenuItem) => {
   return (
     <ListItemButton component={Link} href={path}>
       <Stack spacing={1} alignItems="center">

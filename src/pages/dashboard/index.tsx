@@ -10,7 +10,7 @@ import ReportsTab from './ReportsTab';
 const Dashboard = () => {
   const [tabValue, setTabValue] = useState(0);
 
-  const handleTabChange = (_event: any, newValue: number) => {
+  const handleTabChange = (_event: React.SyntheticEvent, newValue: number) => {
     setTabValue(newValue);
   };
 
